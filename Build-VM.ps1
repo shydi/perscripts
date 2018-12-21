@@ -33,3 +33,5 @@ for ($i=1;$i -le $VMs; $i++)
 {   
     New-VM -Name "iPerfVM[$i]" @VMBaseSpecs
 }   
+
+Test Update 
