@@ -22,8 +22,9 @@ $userExists = Get-ADUser -Filter ({telephoneNumber -eq $phone}) `
     -Properties SAMAccountName,Department,telephoneNumber | `
     Format-Table -Property @{l="Username";e="SAMAccountName"},Department,telephoneNumber -AutoSize -Wrap
 
-$userExport = Get-ADUSer -Filter ({telephoneNumber}) `
-| Select-Object SAMAccountName,Department,telephoneNumber
+$userExport = Get-ADUSer -Filter ({telephoneNumber -eq $phone}) `
+-Properties SAMAccountName,Department,telephoneNumber `
+| Select-Object @{l="Username";e="SAMAccountName"},Department,@{l="Telephone";e="telephoneNumber"}
 #$currentUser = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent())
 #$testadmin = $currentUser.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
@@ -58,5 +59,6 @@ if ($null -eq $userExists)
 }
 else {
     $userExists 
-    $userExport | Export-Csv -Path "Test.csv" |Write-Host "Users have been exported"
+    $userExport |Export-Csv -Path "Test.csv" -NoTypeInformation -Append
+    Invoke-Item -Path .\Test.csv
 }
