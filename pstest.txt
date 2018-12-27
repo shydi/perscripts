@@ -1,0 +1,21 @@
+1)  There is a business request for a script to take some arguments and retrieve some attributes based 
+on the arguments. Upon further prompting, it is revealed that the Accounting department wants to charge 
+users back for long distance calling from work phones. Luckily, both the user’s phone number and user’s 
+biographical data (eg. Name, department) is stored in Microsoft Active directory.
+Please write a script that takes a phone number as an argument and returns back the username and department, 
+and phone number of the corresponding user to the console.
+
+2)  Now that you have demonstrated your ability to write PowerShell scripts, the accounting department has 
+gotten greedy. They want the ability to make an excel spreadsheet with phone numbers and get a report of the 
+data you returned above. You negotiated down to getting a CSV of numbers and generating a CSV of the data to 
+the directory the file you were given was.
+
+3)  The CFO has been fired for embezzling thousands of dollars through a complicated scheme involving 1-900 
+numbers, and now the board wants to make sure this never happens again. To make sure of this they have purchased 
+a whiz-bang appliance that does AI and ML to inspect call traffic patterns to find signs of malicious activity. 
+This appliance accepts data input via a simple REST API that takes a HTTP POST with a Name, a phone number, and a 
+department. As the phone system cost accounting lead, you are tasked with integrating this solution with your 
+existing script. The appliance listens for a HTTP POST at https://fraudappliance.contoso.local/api/v1/addcall. 
+The appliance will not return any data for your consumption. Modify your script to POST each call record 
+(Name, phone number, department) to the fraud appliance, no output to the console is necessary although a 
+confirmation is always good practice.
