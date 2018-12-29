@@ -1,4 +1,4 @@
-﻿function test-message
+﻿<#function test-message
 {
     [CmdletBinding()]
     param(
@@ -19,3 +19,10 @@ for ($i=1;$i -le 10; $i++)
 {   
     Write-Host "Value: ($i)"    
 } 
+#>
+
+#$testex = Get-ADUser -Filter ({telephoneNumber -eq "78148"}) -Properties Department,TelephoneNumber,SAMAccountName `
+#|Select-Object Department,@{l="Phone Number";e="telephoneNumber"},@{l="Username";e="SAMAccountName"}
+
+
+
