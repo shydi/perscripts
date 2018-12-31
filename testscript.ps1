@@ -29,7 +29,7 @@ param(
     [string]$ou = $(throw "Please enter an OU")
 )
 
-$oupath = "LDAP://OU=$ou,OU=Workstations,DC=ctisl,dc=gtri,dc=org"
+$oupath = "LDAP://OU=$ou,OU=Workstations"
 $outest = [adsi]::Exists($oupath)
 
 if ($outest -eq $true){

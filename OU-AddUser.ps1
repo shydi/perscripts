@@ -21,12 +21,12 @@ param(
     [string]$OU
 )
 
-[string]$oupath = "LDAP://OU=$ou,OU=Workstations,DC=ctisl,dc=gtri,dc=org" 
+[string]$oupath = "LDAP://OU=$ou,OU=Workstations" 
 $testpath = [adsi]::Exists($oupath)
 
 if ($testpath -eq $true)
 {
-    Get-ADComputer $hostname | Move-ADObject -TargetPath "$oupath,OU=Workstations,DC=ctisl,dc=gtri,dc=org"
+    Get-ADComputer $hostname | Move-ADObject -TargetPath "$oupath,OU=Workstations"
 }
 else 
 {
