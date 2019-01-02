@@ -27,4 +27,5 @@ foreach ($line in $phoneImport)
     $userData += Get-ADUser -Filter ({telephoneNumber -eq $n}) -Properties Department, SAMAccountName, telephoneNumber `
     | Select-Object -Property @{l="Username";e="SAMAccountName"},Department,@{l="Phone Number";e="telephoneNumber"} 
 }
+
 $userData | Export-Csv -Path udata.csv -Append -NoTypeInformation

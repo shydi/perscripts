@@ -13,7 +13,6 @@ It will iterate each bit of data and output the results into a separate CSV file
 This will take a string as input to determine the path othe CSV file to import 
 #>
 param(
-
     [Parameter(Mandatory=$true)]
     [string]$path
 )
@@ -27,4 +26,16 @@ foreach ($line in $phoneImport)
     $userData += Get-ADUser -Filter ({telephoneNumber -eq $n}) -Properties Department, SAMAccountName, telephoneNumber `
     | Select-Object -Property @{l="Username";e="SAMAccountName"},Department,@{l="Phone Number";e="telephoneNumber"} 
 }
-$url = ""
+
+$user = "shydi"
+$pass = Read-Host -AsSecureString -Prompt  
+
+$url = "https://api.github.com"
+$endpoint = "/gists"
+$token = "?access_token=cc2df3b7c19a236036de8eba845876a8efce5bd0"
+
+$cred = New-Object System.Management.Automation.PSCredential($)
+
+$fullurl = "$url$endpoint"
+$gist = Invoke-RestMethod -Method Post -Uri $fullurl -Body $userData 
+$gist

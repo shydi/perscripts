@@ -17,11 +17,19 @@ param(
     [string]$phone
 )
 
-
 $userExists = Get-ADUser -Filter ({telephoneNumber -eq $phone}) `
     -Properties SAMAccountName,Department,telephoneNumber | `
     Format-Table -Property @{l="Username";e="SAMAccountName"},Department,telephoneNumber -AutoSize -Wrap
-    
+
+if ($null -eq $userExists)
+{
+    Write-Host "User does not exist"
+}
+else {
+    $userExists
+}
+
+##################################################### UNUSED CODE
 #$currentUser = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent())
 #$testadmin = $currentUser.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
@@ -49,11 +57,3 @@ else
     Write-Host "Admin priviledges are needed. Please restart the application as an administrator"
 }
 #>
-
-if ($null -eq $userExists)
-{
-    Write-Host "User does not exist"
-}
-else {
-    $userExists
-}
