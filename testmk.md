@@ -23,7 +23,7 @@ __BOLD AND *brash*__
 ![SECOND PIC (It's a De Brazzas Monkey)](/images/list_2_154_20101219_152652_814.jpg)
 
 This is a [test link](www.google.com)
-This is [another](https://www.youtube.com/?feature=ytca)
+This is [another](https://www.youtube.com/?feature=ytca) test link
 
 Here is a blockquote said by a wise man:
 > Baby Baby Baby
